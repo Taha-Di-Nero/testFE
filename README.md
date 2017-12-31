@@ -8,7 +8,9 @@ At the project root folder run `npm i` to install project dependencies.
 
 ## Serve and build
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. 
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`.
+
+Use the `Floating Action Button` to add charts.
 
 
 ## Build
