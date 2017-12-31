@@ -1,0 +1,48 @@
+<mat-card class="add-chart-card">
+  <mat-card-title>Add chart</mat-card-title>
+  <mat-card-content>
+    <div class="container">
+      <div>
+        <label>Chart type:&nbsp;&nbsp;</label>
+        <mat-radio-group>
+          <mat-radio-button value="ChartTypes.Bar" [checked]="true" (change)="onTypeSelectionChange(ChartTypes.Bar)">Bar Chart</mat-radio-button>
+          <mat-radio-button value="ChartTypes.Line" (change)="onTypeSelectionChange(ChartTypes.Line)">Line Chart</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field>
+        <mat-select placeholder="Choose a sensor" [(value)]="selectedSensor">
+          <mat-option *ngFor="let sensor of sensors" [value]="sensor">
+            {{ sensor.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="chart-color">
+        <input matInput [(colorPicker)]="selectedSensor.color" [style.background]="selectedSensor.color" placeholder="Color" value=" ">
+      </mat-form-field>
+      <button mat-icon-button class="align-middle">
+        <mat-icon (click)="addSensor()" matTooltip="Add sensor" color="primary">my_library_add</mat-icon>
+      </button>
+      <div class="card text-center">
+        <div class="card-header">
+          Selected sensors
+        </div>
+        <div class="card-block">
+          <br/>
+          <mat-chip-list selectable="false" placeholder="Selected sensors">
+            <mat-chip *ngFor="let sensor of chartDefToAdd.sensors;" (remove)="removeChip(sensor)" [style.color]="getChipTextColor(sensor)"
+              [style.background]="getChipColor(sensor)" selected="false">
+              {{ sensor?.name }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+          <mat-error *ngIf="!isSensorPresent()">Add at least one sensor.</mat-error>
+          <br/>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button (click)="chartDefined()" mat-raised-button mat-dialog-close color="primary" [disabled]="!isSensorPresent()">Add</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </mat-card-actions>
+</mat-card>

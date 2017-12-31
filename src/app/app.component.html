@@ -1,0 +1,46 @@
+<div>
+  <mat-toolbar color="primary" layout="row" layout-align="center center" class="mat-elevation-z5">
+    <mat-toolbar-row>
+      <h1>Dashboard</h1>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span class="spacer"></span>
+      <div>
+        <label>Select measurement period:&nbsp;</label>
+        <mat-form-field>
+          <input matInput [min]="getStartDateMin()" [max]="endDate.value" [matDatepicker]="startDatePicker" placeholder="Start date"
+            [formControl]="startDate" (dateChange)="periodChanged($event)">
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [min]="startDate.value" [max]="getEndDateMax()" [matDatepicker]="endDatePicker" placeholder="End date" [formControl]="endDate"
+            (dateChange)="periodChanged($event)">
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="">
+    <div class="row">
+      <div *ngFor="let def of chartDefinitions;" class="col">
+        <mat-card class="chart-card">
+          <div class="float-right">
+            <button (click)="removeChartDefintion(def)" mat-icon-button matTooltip="Remove chart">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <app-chart [chartDefinition]="def" [startDate]="startDate" [endDate]="endDate"></app-chart>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <span class="add">
+    <button (click)="showAddChartForm()" mat-fab matTooltip="Add chart" matTooltipPosition="above">
+      <mat-icon>my_library_add</mat-icon>
+    </button>
+  </span>
+</div>

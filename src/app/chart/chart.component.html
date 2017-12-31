@@ -1,0 +1,9 @@
+<ngx-charts-bar-vertical-2d *ngIf="chartDefinition.type === ChartTypes.Bar" [view]="view" [scheme]="colorScheme" [results]="data" [gradient]="gradient" [xAxis]="showXAxis"
+  [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel">
+</ngx-charts-bar-vertical-2d>
+
+<ngx-charts-line-chart *ngIf="chartDefinition.type === ChartTypes.Line" [view]="view" [scheme]="colorScheme" [results]="data" [gradient]="gradient" [xAxis]="showXAxis"
+  [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel">
+</ngx-charts-line-chart>

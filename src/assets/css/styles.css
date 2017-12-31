@@ -1,0 +1,54 @@
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+    font-family: Roboto, sans-serif;
+  }
+  
+  .add {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+  }
+
+  .chart-color {
+    width: 1.6rem;
+  }
+
+  .top-buffer { 
+    margin-top: 1rem; 
+  }
+
+  .add-chart-card {
+    margin: 1rem auto;
+    width: 25rem !important;
+  } 
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .chart-card {
+    margin: 1rem auto;
+    width: 36rem !important;
+    height: 27rem !important;
+  }
+
+  mat-chip {
+    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+    border: 0.1rem solid black;
+  }
+
+  mat-chip:not(.mat-basic-chip) .mat-chip-remove {
+    color: white !important;
+    opacity: 1;
+    mix-blend-mode: difference;
+}
+
+card-remove {
+  position: absolute;
+  right: 5px;
+  text-decoration: none;
+  top: 5px;
+}
