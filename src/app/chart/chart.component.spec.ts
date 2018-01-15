@@ -10,11 +10,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartComponent } from './chart.component';
 import { ChartsService } from '../services/charts.service';
 import { ChartDefinition } from '../shared/data';
-import { getDefaultSensors } from '../shared/utils';
+import { defaultSensors } from '../shared/utils';
+import { MaterialModule } from '../shared/material.module';
 
 let chartService: ChartsService;
 const chartDef = new ChartDefinition();
-chartDef.sensors = getDefaultSensors();
+chartDef.sensors = defaultSensors;
 
 describe('ChartComponent', () => {
   let component: ChartComponent;
@@ -29,6 +30,7 @@ describe('ChartComponent', () => {
         ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        MaterialModule,
         NgxChartsModule
       ],
       providers: [ChartsService, { provide: APP_BASE_HREF, useValue: '/' } ]

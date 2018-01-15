@@ -1,5 +1,5 @@
-<div>
-  <mat-toolbar color="primary" layout="row" layout-align="center center" class="mat-elevation-z5">
+<div class="container-fluid">
+  <mat-toolbar color="primary" layout="row" class="mat-elevation-z6 fixed-top">
     <mat-toolbar-row>
       <h1>Dashboard</h1>
     </mat-toolbar-row>
@@ -23,17 +23,10 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <div class="">
-    <div class="row">
-      <div *ngFor="let def of chartDefinitions;" class="col">
-        <mat-card class="chart-card">
-          <div class="float-right">
-            <button (click)="removeChartDefintion(def)" mat-icon-button matTooltip="Remove chart">
-              <mat-icon>close</mat-icon>
-            </button>
-          </div>
-          <app-chart [chartDefinition]="def" [startDate]="startDate" [endDate]="endDate"></app-chart>
-        </mat-card>
+  <div class="container-fluid" style="margin-top: 8rem;">
+    <div class="d-flex flex-row justify-content-around flex-wrap">
+      <div *ngFor="let def of chartDefinitions;">
+        <app-chart [chartDefinition]="def" (remove)="removeChartDefintion($event)"[startDate]="startDate" [endDate]="endDate"></app-chart>
       </div>
     </div>
   </div>

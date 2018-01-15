@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Output} from '@angular/core';
 
 import {ChartDefinition, ChartTypes, Sensor} from '../shared/data';
-import {getDefaultSensors, invertColor} from '../shared/utils';
+import {defaultSensors, invertColor} from '../shared/utils';
 
 @Component({
   selector: 'app-add-chart',
@@ -15,28 +15,28 @@ export class AddChartComponent {
   sensors: Sensor[];
   selectedSensor: Sensor;
 
-  chartDefToAdd = new ChartDefinition();
+  currentChartDefinition = new ChartDefinition();
 
   ChartTypes = ChartTypes;
 
   constructor(private ref: ChangeDetectorRef) {
-    this.sensors = getDefaultSensors();
+    this.sensors = defaultSensors;
     this.selectedSensor = this.sensors[0];
   }
 
   addSensor(): void {
-    const index = this.chartDefToAdd.sensors.findIndex(
+    const index = this.currentChartDefinition.sensors.findIndex(
         s => this.selectedSensor.id === s.id);
     if (index === -1) {
-      this.chartDefToAdd.sensors.push(this.selectedSensor);
+      this.currentChartDefinition.sensors.push(this.selectedSensor);
     }
     this.ref.markForCheck();
   }
 
   private removeChip(sensor: Sensor): void {
-    const index = this.chartDefToAdd.sensors.findIndex(s => sensor.id === s.id);
+    const index = this.currentChartDefinition.sensors.findIndex(s => sensor.id === s.id);
     if (index >= 0) {
-      this.chartDefToAdd.sensors.splice(index, 1);
+      this.currentChartDefinition.sensors.splice(index, 1);
     }
     this.ref.markForCheck();
   }
@@ -50,15 +50,15 @@ export class AddChartComponent {
   }
 
   onTypeSelectionChange(type: ChartTypes): void {
-    this.chartDefToAdd.type = type;
+    this.currentChartDefinition.type = type;
   }
 
   isSensorPresent(): boolean {
-    return this.chartDefToAdd.sensors.length > 0;
+    return this.currentChartDefinition.sensors.length > 0;
   }
 
   chartDefined(): void {
-    this.defined.emit(this.chartDefToAdd);
+    this.defined.emit(this.currentChartDefinition);
   }
 
 }

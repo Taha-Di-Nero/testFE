@@ -21,8 +21,8 @@ describe('AppComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MaterialModule,
         BrowserAnimationsModule,
+        MaterialModule,
         AddChartModule,
         ChartModule
       ],

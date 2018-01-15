@@ -1,9 +1,19 @@
-<ngx-charts-bar-vertical-2d *ngIf="chartDefinition.type === ChartTypes.Bar" [view]="view" [scheme]="colorScheme" [results]="data" [gradient]="gradient" [xAxis]="showXAxis"
-  [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel">
-</ngx-charts-bar-vertical-2d>
+<mat-card class="chart-card">
+  <div class="float-right">
+    <button (click)="editChartForm()" mat-icon-button matTooltip="Edit chart definition">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button (click)="removeMe()" mat-icon-button matTooltip="Remove chart">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <ngx-charts-bar-vertical-2d *ngIf="chartDefinition.type === ChartTypes.Bar" [view]="view" [scheme]="colorScheme" [results]="data"
+    [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [groupPadding]="groupPadding" [barPadding]="barPadding">
+  </ngx-charts-bar-vertical-2d>
 
-<ngx-charts-line-chart *ngIf="chartDefinition.type === ChartTypes.Line" [view]="view" [scheme]="colorScheme" [results]="data" [gradient]="gradient" [xAxis]="showXAxis"
-  [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel">
-</ngx-charts-line-chart>
+  <ngx-charts-line-chart *ngIf="chartDefinition.type === ChartTypes.Line" [view]="view" [scheme]="colorScheme" [results]="data"
+    [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [autoScale]="true" [timeline]="true">
+  </ngx-charts-line-chart>
+</mat-card>

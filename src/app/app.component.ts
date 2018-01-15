@@ -16,7 +16,7 @@ import { AddChartComponent } from './add-chart/add-chart.component';
 })
 export class AppComponent implements OnInit {
   startDate = new FormControl(startOfMonth(new Date()));
-  endDate = new FormControl(addDays(startOfMonth(new Date()), 7));
+  endDate = new FormControl(addDays(startOfMonth(new Date()), 15));
 
   chartDefinitions: ChartDefinition[];
 
@@ -56,10 +56,10 @@ export class AppComponent implements OnInit {
   }
 
   getEndDateMax(): Date {
-    return addDays(this.startDate.value, 7);
+    return addDays(this.startDate.value, 15);
   }
 
   getStartDateMin(): Date {
-    return subDays(this.endDate.value, 7);
+    return subDays(this.endDate.value, 15);
   }
 }

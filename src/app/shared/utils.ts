@@ -28,16 +28,14 @@ export function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function getDefaultSensors(): Sensor[] {
-  return [
-    {id: 1, name: 'Temperature sensor', color: '#ff0000'},
-    {id: 2, name: 'Humidity sensor', color: '#33cc33'},
-    {id: 3, name: 'Light sensor', color: '#fff000'}
-  ];
-}
+export const defaultSensors: Sensor[] = [
+  {id: 1, name: 'Temperature sensor', color: '#ff0000'},
+  {id: 2, name: 'Humidity sensor', color: '#33cc33'},
+  {id: 3, name: 'Light sensor', color: '#fff000'}
+];
 
 export function getDefaultChartDefinitions(): ChartDefinition[] {
   const def = new ChartDefinition();
-  def.sensors = getDefaultSensors();
+  def.sensors = defaultSensors;
   return [def];
 }

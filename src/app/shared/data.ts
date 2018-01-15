@@ -4,8 +4,8 @@ export enum ChartTypes {
 }
 
 export class Sensor {
-  id: number;
-  name: string;
+  readonly id: number;
+  readonly name: string;
   color: string;
 }
 
